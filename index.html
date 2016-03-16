@@ -1,25 +1,39 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>{{ page.title }}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/css/styles.css" />
-	</head>
-	<body>
-		<header role="banner">
-			...
-		</header>
+---
+layout: default
+title: Home
+nav-area: home
+---
 
-		<div role="main">
-			<div class="container">
-				{{ content }}
-			</div>
-		</div>
+<header class="intro">
+  <h1>Tagline about how awesome we are</h1>
+  <p>Lorem ipsum dolor sit amet...</p>
+</header><!-- end of section.intro -->
 
-		<footer role="contentinfo">
-			<p>Playing with Jekyll from <a href="https://www.smashingmagazine.com/2016/02/content-modeling-with-jekyll/">this article</a>.</p>
-		</footer>
-	</body>
-</html>
+<div class="projects-blurb">
+  <h2>Our projects</h2>
+  <ul class="listing">
+    {% assign projects = site.projects | where: "featured", "true" | sort: 'featured-priority' %}
+    {% for project in projects %}
+    <li>
+      <h3>{{ project.title }}</h3>
+      <a href="{{ project.url }}">Learn about {{ project.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <a href="/projects" class="direct-to-section">Learn about more of our projects</a>
+</div><!-- end of div.projects-blurb -->
+
+<div class="articles-blurb">
+  <h2>Our articles</h2>
+  <ul class="listing">
+    {% assign articles = site.articles | sort: 'listing-priority' %}
+    {% for person in articles %}
+    <li>
+      <h3>{{ person.first-name }} {{ person.last-name }}</h3>
+      <p>{{ person.job }}</p>
+      <a href="{{ person.url }}">Read {{ person.first-name }} {{ person.last-name }}'s bio</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <a href="/articles" class="direct-to-section">Learn more about our articles</a>
+</div><!-- end of section.articles-blurb -->

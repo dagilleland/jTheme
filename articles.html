@@ -1,0 +1,21 @@
+---
+layout: default
+title: articles
+---
+
+<header class="intro">
+  <h1>articles</h1>
+  <p>Lorem ipsum dolor sit amet...</p>
+</header>
+
+<div class="articles-body">
+  <ul class="listing">
+    {% assign articles = site.articles | sort: 'listing-priority' %}
+    {% for person in articles %}
+    <li>
+      <h2><a href="{{ person.url }}">{{ person.first-name }} {{ person.last-name }}</a></h2>
+      <p>{{ person.job }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
