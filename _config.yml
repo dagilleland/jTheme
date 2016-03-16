@@ -1,0 +1,23 @@
+permalink: pretty
+
+collections:
+  articles:
+    output: true
+  projects:
+    output: true
+  quotes:
+    output: true
+
+defaults:
+  - scope:
+      type: articles
+    values:
+      layout: articles
+  - scope:
+      type: projects
+    values:
+      layout: projects
+  - scope:
+      type: quotes
+    values:
+      layout: quotes
